@@ -39,6 +39,14 @@ When a donor visits the website for donating his or her bike, they will be redir
 According to the condition of the bike, the inventory for the bike and the data of Donar are allocated.
 The new and good-condition bike is stored in a separate inventory (just in need of inspection or minor repairs; hence, it takes less time to deal with) and is ready for donation to children. The fair conditions are required to be investigated more deeply.
 
+![image](https://github.com/anees1203/BWorks-Material-Donation-Tracking/assets/86214595/c96b3af1-7d19-42e2-aef6-e30bb7d79d46)
+---
+![image](https://github.com/anees1203/BWorks-Material-Donation-Tracking/assets/86214595/ec1113f4-1f0c-4c94-bccd-b56f7b69ec37)
+---
+![image](https://github.com/anees1203/BWorks-Material-Donation-Tracking/assets/86214595/fdc94fac-6670-4248-a1ee-0eb134dab1c1)
+
+
+
 ## Buyers:
 People who are interested can buy from the website directly, and for every one who purchases the bicycles, it sends an email to the buyer (which helps more children get a free course and a bike).
 Buyers can also purchase custom parts from the website.
