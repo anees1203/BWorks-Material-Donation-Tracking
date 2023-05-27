@@ -44,6 +44,10 @@ The new and good-condition bike is stored in a separate inventory (just in need 
 ![image](https://github.com/anees1203/BWorks-Material-Donation-Tracking/assets/86214595/ec1113f4-1f0c-4c94-bccd-b56f7b69ec37)
 ---
 ![image](https://github.com/anees1203/BWorks-Material-Donation-Tracking/assets/86214595/fdc94fac-6670-4248-a1ee-0eb134dab1c1)
+---
+If any of the bike are found or needed more work those related information is removed from the original [database(new,good)] and appended in Database(fair).
+![image](https://github.com/anees1203/BWorks-Material-Donation-Tracking/assets/86214595/00c81a98-a2e8-4d13-9ba4-cde7e3a2d740)
+
 
 
 
