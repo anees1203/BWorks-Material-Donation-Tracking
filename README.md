@@ -2,7 +2,7 @@
 
 ## Client Profile
 Bworks is an organization which provides BYTE services, BYCYCLE services. Bworks major mission is to achieve community service, sustainability, literacy, service and enjoyement. they have membership plans to access the services as well.
-BYCYCLE Services includes accepting cycle donations of children and adult sizes. distributing to the people. *They can even accept and repair the bycyles which are not in good conditions
+BYCYCLE Services includes accepting cycle donations of children and adult sizes. distributing to the people. *They can even accept and repair the bycyles which are not in good conditions.
 
 BYTE services: They organize computer classes. people can register and attend the classes.
 
