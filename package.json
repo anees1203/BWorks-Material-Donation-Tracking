@@ -7,9 +7,6 @@
     "start": "node index.js",
     "test": "echo \"No tests specified\""
   },
-  "dependencies": {
-    "dependency-name": "dependency-version"
-  },
   "devDependencies": {
     "dev-dependency-name": "dev-dependency-version"
   },
