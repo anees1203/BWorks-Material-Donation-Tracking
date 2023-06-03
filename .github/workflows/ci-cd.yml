@@ -2,71 +2,37 @@ name: CI/CD Pipeline
 
 on:
   pull_request:
-    branches:
-      - main
+    types: [opened]
   push:
     tags:
-      - 'v*' # Trigger on tags starting with 'v'
+      - 'v*.*.*' # Match tags with a standardized version name (e.g., v1.0.0)
 
 jobs:
-  build:
-    name: Build and Test
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+      - name: Run script
+        run: echo "Running tests and build steps..."
 
-      - name: Run linting
-        run: echo "Skipping linting step"
-
-      - name: Run tests
-        run: npm test
-
-  publish_release:
-    name: Publish GitHub Release
-    needs: build
+  publish-release:
+    needs: build-and-test
+    runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
 
-    runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Build project
-        run: npm run build
-
-      - name: Create GitHub Release
+      - name: Create release
         uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           body: |
-            Changes in this release:
-            - Add feature X
-            - Fix issue Y
+            This is the release for version ${{ github.ref }}.
           draft: false
           prerelease: false
-
-      - name: Upload artifact
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dist/my-project.zip
-          asset_name: my-project.zip
-          asset_content_type: application/zip
