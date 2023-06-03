@@ -23,7 +23,7 @@ jobs:
           node-version: '14'
 
       - name: Run linting
-        run: npm run lint
+        run: eslint
 
       - name: Run tests
         run: npm test
