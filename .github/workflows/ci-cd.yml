@@ -3,16 +3,14 @@ name: CI/CD Pipeline
 on:
   pull_request:
     branches:
-      - '*'
-  push:
-    branches:
       - main
+  push:
     tags:
-      - 'v*.*.*'
+      - 'v*' # Trigger on tags starting with 'v'
 
 jobs:
   build:
-    name: Build
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -22,26 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build project
-        run: npm run build
-
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
+          node-version: '14'
 
       - name: Install dependencies
         run: npm ci
@@ -49,28 +28,14 @@ jobs:
       - name: Run linting
         run: npm run lint
 
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-
-      - name: Install dependencies
-        run: npm ci
-
       - name: Run tests
-        run: npm run test
+        run: npm test
 
-  package:
-    name: Package
-    needs: [build, lint, test]
+  publish_release:
+    name: Publish GitHub Release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+
     runs-on: ubuntu-latest
 
     steps:
@@ -80,15 +45,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: '14'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Package project
-        run: npm run package
+      - name: Build project
+        run: npm run build
 
-      - name: Create GitHub release
+      - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -96,7 +61,18 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           body: |
-            This is an automated release created by the CI/CD pipeline.
+            Changes in this release:
+            - Add feature X
+            - Fix issue Y
           draft: false
           prerelease: false
 
+      - name: Upload artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist/my-project.zip
+          asset_name: my-project.zip
+          asset_content_type: application/zip
