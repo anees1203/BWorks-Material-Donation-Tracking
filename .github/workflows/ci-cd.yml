@@ -15,8 +15,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Run script
-        run: echo "Running tests and build steps..."
+      - name: Run custom command
+        run: echo "Running custom build and test steps..."
 
   publish-release:
     needs: build-and-test
