@@ -6,7 +6,7 @@ on:
       - main
   push:
     tags:
-      - 'v*'
+      - 'v*' # Trigger on tags starting with 'v'
 
 jobs:
   build:
