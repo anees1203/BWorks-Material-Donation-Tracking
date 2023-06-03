@@ -1,1 +1,24 @@
+{
+  "name": "BWorks-Material-Donation-Tracking",
+  "version": "V1.0.0",
+  "description": "Your project description",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"No tests specified\""
+  },
+  "dependencies": {
+    "dependency-name": "dependency-version"
+  },
+  "devDependencies": {
+    "dev-dependency-name": "dev-dependency-version"
+  },
+  "keywords": [
+    "your",
+    "project",
+    "keywords"
+  ],
+  "author": "Anees Shaik",
+  "license": "MIT"
+}
 
