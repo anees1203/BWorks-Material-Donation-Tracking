@@ -1,6 +1,6 @@
 {
   "name": "BWorks-Material-Donation-Tracking",
-  "version": "V1.0.0",
+  "version": "v1.0.0",
   "description": "Your project description",
   "main": "index.js",
   "scripts": {
