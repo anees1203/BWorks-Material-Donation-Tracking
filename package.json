@@ -4,9 +4,10 @@
   "description": "Your project description",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint .",
     "start": "node index.js",
-    "test": "echo \"No tests specified\"",
-    "lint": "eslint ."
+    "test": "echo \"No tests specified\""
+    
   },
   "devDependencies": {
     "dev-dependency-name": "dev-dependency-version",
