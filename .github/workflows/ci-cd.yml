@@ -8,8 +8,7 @@ on:
       - 'v*.*.*' # Match tags with a standardized version name (e.g., v1.0.0)
 
 jobs:
-   super-lint:
-    name: Lint code base
+   build-test:
     runs-on: ubuntu-latest
 
     steps:
